@@ -129,14 +129,14 @@
 		</div>
 		<div class="row">
 		<figure class="col-sm-5 text-center ">
-			<img src="img/songhyekyo2.jpg" class="img-responsive img-center align-"/>
+			<img src="img/songhyekyo2.jpg" id="myImg" class="img-responsive img-center align-"/>
 			<p>김혜교 님은..</p>
 		</figure>
 		<figure class="col-sm-2 text-center">
 		<h3><strong>99</strong>%</h3>
 		</figure>
 		<figure class="col-sm-5 text-center">
-			<img src="img/songhyekyo1.jpg" class="img-responsive img-center"/>
+			<img src="img/songhyekyo1.jpg" id="celImg" class="img-responsive img-center"/>
 			<p>송혜교씨와 닮으셨네요 :)!</p>
 		</figure>
 		</div>
@@ -281,6 +281,7 @@
 				data = data_uri
 				document.getElementById('results').innerHTML = '<h3>Your name is ' + document.getElementById('usrname').value + '</h3>'
 																+ '<img src="'+data+'">';
+				document.getElementById('myImg').src = data;
 			} );
 		}
 
