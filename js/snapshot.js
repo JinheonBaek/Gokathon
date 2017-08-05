@@ -24,7 +24,7 @@ function snapshot(data) {
 					contentType: false,
 					type: 'POST',
 					success: function(data) {
-						document.getElementById('resultsInfo').innerHTML = 'The image data is uploaded to the server' + '</br>' + 'Analyzing yor Image';
+						document.getElementById('resultsInfo').innerHTML = 'The image data is uploaded to the server' + '</br>' + 'Analyzing your Image';
 						analyzingFace(usrName, imgName, findSimilar);
 					},
 					error: function(error) {

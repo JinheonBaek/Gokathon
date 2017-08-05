@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+	
 	  
 	<script>
     // <![CDATA[
@@ -31,11 +32,14 @@
 		#my_camera { border:1px solid; margin-left:auto; margin-right:auto; }
 		#results { padding:20px; border:1px solid; margin-left:auto; margin-right:auto; }
 		#resultsInfo { padding:20px; border:1px solid; margin-left:auto; margin-right:auto; }
+		#confidence {  margin: 20px; width: 200px; height: 200px; position: relative; }
 	</style>
   	
 </head>
 <body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/1.0.0/dist/progressbar.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
 
 	<!-- Include the Webcam.js JavaScript Library -->
     <script type="text/javascript" src="js/webcam.min.js"></script>
@@ -125,6 +129,7 @@
 	<section class="container-fluid">
 		<div class="row module hex-banner heading-anchor text-center" id="celebrity-result">
 			<h1>당신과 닮은 연예인은 누구일까요?</h1>
+			</br>
 		</div>
 		<div class="row">
 		<figure class="col-sm-5 text-center">
@@ -135,10 +140,7 @@
 			</div>
 		</figure>
 		<figure class="col-sm-2 text-center">
-		</br></br></br></br></br>
-		<div id="confidence-rate" >
-			<h3><strong>64</strong>%</h3>
-		</div>
+		<div id="confidence"></div>
 		</figure>
 		<figure class="col-sm-5 text-center">
 			<img src="img/songhyekyo2.jpg" id="celImg" class="img-responsive img-center"/>
@@ -259,7 +261,7 @@
 				document.getElementById('results').innerHTML = '<h3>Your name is ' + document.getElementById('usrname').value + '</h3>'
 																+ '<img src="'+data+'">';
 				document.getElementById('myImg').src = data;
-				document.getElementById('my-comment').innerHTML = "<h4>" + document.getElementById('usrname').value + "님은";
+				document.getElementById('my-comment').innerHTML = "</br> <h4>" + document.getElementById('usrname').value + "님은";
 			} );
 		}
 
@@ -268,7 +270,41 @@
 			document.getElementById('analysisImage').className = "ui primary loading button";
 			snapshot(data);
 		}
-    </script>
-    
+	</script>
+
+	<script language="Javascript">
+		var bar = new ProgressBar.Circle(confidence, {
+			color: '#aaa',
+			// This has to be the same size as the maximum width to
+			// prevent clipping
+			strokeWidth: 4,
+			trailWidth: 1,
+			easing: 'easeInOut',
+			duration: 1400,
+			text: {
+				autoStyleContainer: false
+			},
+			from: { color: '#aaa', width: 1 },
+			to: { color: '#333', width: 4 },
+			// Set default step function for all animate calls
+			step: function(state, circle) {
+				circle.path.setAttribute('stroke', state.color);
+				circle.path.setAttribute('stroke-width', state.width);
+
+				var value = Math.round(circle.value() * 100);
+				if (value === 0) {
+					circle.setText('');
+				} else {
+					circle.setText(value);
+				}
+
+			}
+		});
+		bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+		bar.text.style.fontSize = '2rem';
+
+		bar.animate(0.64);  // Number from 0.0 to 1.0
+	</script>
+
 </body>
 </html>
