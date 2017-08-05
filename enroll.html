@@ -15,5 +15,29 @@
 <body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
+	<!-- Include the cog.js Javascript -->
+	<script type="text/javascript" src="js/cog.js"></script>
+
+	<!-- A button for enroll celebrity -->
+	<form id="enroll" style="text-align:center; padding-top:60px;">
+		<div class="ui input">
+			<input type="text" name="celname" id="celname" placeholder="Input celebrity name" size="40">
+		</div>
+		Ex) 
+		<br><br>
+		<div class="ui input">
+			<input type="text" name="url" id="url" placeholder="Input url" size="80">
+		</div>
+		<br><br>
+		<div class="ui input">
+			<input class="ui button" type="button" value="Enroll" onClick="addFace()">
+		</div>
+	</form>
+
+	<script type="text/javascript">
+		var faceLst = getFaceList();
+		alert(faceLst);
+	</script>
+
 </body>
 </html>
