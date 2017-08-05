@@ -150,6 +150,9 @@ function celFaceList(faceId, confidence) {
 }
 
 function findCelFace(faceId, confidence, data) {
+	var modal = document.getElementById('myModal');
+	modal.style.display = "none";
+
 	faceList = data['persistedFaces'];
 	for (x=0; x < faceList.length; x++) {
 		if (faceId === faceList[x].persistedFaceId) {
