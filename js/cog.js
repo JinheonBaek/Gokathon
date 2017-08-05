@@ -94,7 +94,7 @@ function findSimilar(faceId) {
 			async: false,
 			// Request body
 			data: "{" +
-				"\"faceID\":" + faceId + "," +
+				"\"faceID\":\"" + faceId + "\"," +
 				"\"faceListID\":\"" + faceListId + "\"," +
 				"\"maxNumOfCandidatesReturned\":" + 10 + "," +
 				"\"mode\":\"matchPerson\"" +
