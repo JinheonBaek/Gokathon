@@ -68,7 +68,8 @@ function analyzingFace(usrName, imgName, findSimilar) {
 		})
 		.done(function(data) {
 			var faceId = data[0]['faceId'];
-			findSimilar(faceId);
+			var celName;
+			findSimilar(celName, faceId);
 		})
 		.fail(function() {
 			alert("error");
@@ -76,7 +77,7 @@ function analyzingFace(usrName, imgName, findSimilar) {
 	});
 }
 
-function findSimilar(faceId) {
+function findSimilar(celName, faceId) {
 	var faceListId = "celebrity";
 
 	$(function() {
@@ -97,18 +98,59 @@ function findSimilar(faceId) {
 			data: "{" +
 				"\"faceID\":\"" + faceId + "\"," +
 				"\"faceListID\":\"" + faceListId + "\"," +
-				"\"maxNumOfCandidatesReturned\":" + 10 + "," +
+				"\"maxNumOfCandidatesReturned\":" + 3 + "," +
 				"\"mode\":\"matchPerson\"" +
 			"}",
 		})
 		.done(function(data) {
-			alert("success");
-			document.getElementById('analysisImage').className = "ui primary button";
+			var faceId = data[0].persistedFaceId;
+			var confidence = data[0].confidence;
+			if (data.length < 1) {
+				alert("관련 연예인을 찾을 수 없습니다.")
+			}
+			else {
+				celFaceList(faceId, confidence);
+			}
 		})
 		.fail(function() {
 			alert("error");
 		});
 	});
+}
+
+function celFaceList(faceId, confidence) {
+    $(function() {
+        var params = {
+            // Request parameters
+        };
+      
+        $.ajax({
+            url: "https://southeastasia.api.cognitive.microsoft.com/face/v1.0/facelists/celebrity?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", faceSubscriptionKey);
+            },
+			type: "GET",
+            // Request body
+            data: "{body}",
+        })
+        .done(function(data) {
+			findCelFace(faceId, confidence, data);
+			document.getElementById('analysisImage').className = "ui primary button";
+        })
+        .fail(function() {
+            alert("error");
+        });
+	});
+}
+
+function findCelFace(faceId, confidence, data) {
+	faceList = data['persistedFaces'];
+	for (x=0; x < faceList.length; x++) {
+		if (faceId === faceList[x].persistedFaceId) {
+			document.getElementById('celebrity-result').innerHTML = faceList[x].userData + " 님 아니세요?";
+		}
+	}
 }
 
 function getFaceList() {
