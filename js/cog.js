@@ -1,7 +1,8 @@
 //Cog
 
 //Config
-var subscriptionKey = "39e75e2ea70c4d14b70e4c29d3d61fde";
+var faceSubscriptionKey = "39e75e2ea70c4d14b70e4c29d3d61fde";
+var searchSubscriptionKey = "0567aab29ace42d6b2d2ea6798a2c058";
 
 //Enroll Face to Face List
 function addFace() {
@@ -22,7 +23,7 @@ function addFace() {
 			beforeSend: function(xhrObj){
 				// Request headers
 				xhrObj.setRequestHeader("Content-Type","application/json");
-				xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+				xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", faceSubscriptionKey);
 			},
 			type: "POST",
 			async: false,
@@ -56,7 +57,7 @@ function analyzingFace(usrName, imgName, findSimilar) {
 			beforeSend: function(xhrObj){
 				// Request headers
 				xhrObj.setRequestHeader("Content-Type","application/json");
-				xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+				xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", faceSubscriptionKey);
 			},
 			type: "POST",
 			async: false,
@@ -88,7 +89,7 @@ function findSimilar(faceId) {
 			beforeSend: function(xhrObj){
 				// Request headers
 				xhrObj.setRequestHeader("Content-Type","application/json");
-				xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+				xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", faceSubscriptionKey);
 			},
 			type: "POST",
 			async: false,
@@ -119,7 +120,7 @@ function getFaceList() {
             url: "https://southeastasia.api.cognitive.microsoft.com/face/v1.0/facelists/celebrity?" + $.param(params),
             beforeSend: function(xhrObj){
                 // Request headers
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", faceSubscriptionKey);
             },
 			type: "GET",
             // Request body
@@ -141,4 +142,35 @@ function printFaceList(data) {
 		document.getElementById('faceLst').innerHTML += faceList[x].userData + '-';
 		document.getElementById('faceLst').innerHTML += faceList[x].persistedFaceId + '<br>';
 	}
+}
+
+function searchFashion(name) {
+	name = "현빈"
+    $(function() {
+        var params = {
+            // Request parameters
+            "q": "\"" + name + "\"",
+            "count": "10",
+            "offset": "0",
+            "mkt": "ko-KR",
+            "safesearch": "Moderate",
+        };
+      
+        $.ajax({
+            url: "https://api.cognitive.microsoft.com/bing/v5.0/search?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", searchSubscriptionKey);
+            },
+            type: "GET",
+            // Request body
+            data: "{body}",
+        })
+        .done(function(data) {
+            alert("success");
+        })
+        .fail(function() {
+            alert("error");
+        });
+	});
 }
