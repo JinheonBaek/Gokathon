@@ -153,11 +153,11 @@ function findCelFace(faceId, confidence, data) {
 	faceList = data['persistedFaces'];
 	for (x=0; x < faceList.length; x++) {
 		if (faceId === faceList[x].persistedFaceId) {
-			document.getElementById('celebrity-result').innerHTML = faceList[x].userData + " 님 아니세요?";
+			document.getElementById('celebrity-result').innerHTML = faceList[x].userData.split('_')[0] + " 님 아니세요?";
 			document.getElementById('confidence-rate').innerHTML = "정확도는? "+ confidence * 100;
-			document.getElementById('cel-comment').innerHTML = faceList[x].userData + "씨와 닮으셨네요 :)!"
+			document.getElementById('cel-comment').innerHTML = faceList[x].userData.split('_')[0] + "씨와 닮으셨네요 :)!"
 			document.getElementById('celImg').src = "https://gokathon.azurewebsites.net/celebrity/" + faceList[x].userData + ".jpg";
-			searchCelFashion(faceList[x].userData);
+			searchCelFashion(faceList[x].userData.split('_')[0]);
 		}
 	}
 }
@@ -235,4 +235,8 @@ function printCelFashionLst(data) {
 	for (x=0; x<len; x++) {
 		document.getElementById('fashion-'+(x+1)).src = data['images']['value'][x]['contentUrl'];
 	}
+}
+
+function parseName(data) {
+
 }
