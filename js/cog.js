@@ -216,10 +216,21 @@ function searchCelFashion(name) {
             data: "{body}",
         })
         .done(function(data) {
-            alert(JSON.stringify(data['images']));
+            printCelFashionLst(data);
         })
         .fail(function() {
             alert("error");
         });
 	});
+}
+
+function printCelFashionLst(data) {
+	if (5 <= data['images']['value'].length)
+		len = 5
+	else
+		len = data['images']['value'].length
+
+	for (x=0; x<len; x++) {
+		alert(data['images']['value'][x]['contentUrl'])
+	}
 }
