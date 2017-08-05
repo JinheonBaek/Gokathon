@@ -103,6 +103,7 @@ function findSimilar(faceId) {
 		})
 		.done(function(data) {
 			alert("success");
+			document.getElementById('analysisImage').className = "ui primary button";
 		})
 		.fail(function() {
 			alert("error");

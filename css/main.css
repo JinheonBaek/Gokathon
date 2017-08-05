@@ -158,7 +158,10 @@ footer li img {
     border: 1px solid #888;
     width: 80%;
 }
-
+.modal-content {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
 /* The Close Button */
 .close {
     color: #aaaaaa;
@@ -172,4 +175,12 @@ footer li img {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.modal-main { 
+    margin:20px; 
+    padding:20px; 
+    border:1px solid; 
+    margin-left:auto; 
+    margin-right:auto; 
 }

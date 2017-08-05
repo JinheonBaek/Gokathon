@@ -49,6 +49,55 @@
 		</div>
   	</header>
 
+	  	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div class="ui main container">
+				<div id="modal-main">
+					<!-- A button for taking snaps -->
+					<form id="snapshot" style="text-align:center;">
+						<div class="ui input">
+							<input type="text" name="usrname" id="usrname" placeholder="Input your name">
+							&nbsp;
+							&nbsp;
+							<input class="ui button" type="button" value="Take Snapshot" onClick="take_snapshot()">
+						</div>
+					</form>
+
+					</br>
+
+					<div id="my_camera">
+
+					</div>
+
+					<div class="ui section divider"></div>
+
+					<div id="results">
+						Your captured image will appear here...
+					</div>
+
+					<div class="ui section divider"></div>
+
+					<div id="resultsInfo">
+						ResultsInfo will appear here...
+					</div>
+
+					<div class="ui section divider"></div>
+
+					<form id="upload">
+						<button type="button" class="ui primary button" id="analysisImage" onClick="uploadImage()"> 
+							Analysing Image
+						</button>
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
   
 	<span id="lights"></span>
 	<section class="jumbotron">
@@ -159,55 +208,6 @@
       </ul>
     </div>
   </footer>
-	
-
-	<!-- The Modal -->
-	<div id="myModal" class="modal">
-
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<div class="ui main container" id="guide" style="padding-top:60px;">
-				<div id="main">
-					<!-- A button for taking snaps -->
-					<form id="snapshot" style="text-align:center;">
-						<div class="ui input">
-							<input type="text" name="usrname" id="usrname" placeholder="Input your name">
-							&nbsp;
-							&nbsp;
-							<input class="ui button" type="button" value="Take Snapshot" onClick="take_snapshot()">
-						</div>
-					</form>
-
-					</br>
-
-					<div id="my_camera">
-
-					</div>
-
-					</br>
-
-					<div id="results">
-						Your captured image will appear here...
-					</div>
-
-					</br>
-
-					<div id="resultsInfo">
-						ResultsInfo will appear here...
-					</div>
-
-					<form id="upload">
-						<button type="button" class="ui primary button" id="analysisImage" onClick="uploadImage()"> 
-							Analysing Image
-						</button>
-					</form>
-
-				</div>
-			</div>
-		</div>
-
-	</div>
 
 	<form id="snapshot" style="text-align:center;">
 		<div class="ui input">
