@@ -57,7 +57,7 @@
 		</div>
   	</header>
 
-	  	<!-- The Modal -->
+	<!-- The Modal -->
 	<div id="myModal" class="modal">
 
 		<!-- Modal content -->
@@ -129,20 +129,23 @@
 		</div>
 		<div class="row">
 		<figure class="col-sm-5 text-center ">
-			<img src="img/songhyekyo2.jpg" id="myImg" class="img-responsive img-center align-"/>
-			<p>김혜교 님은..</p>
+			<img src="img/songhyekyo1.jpg" id="myImg" class="img-responsive img-center align-"/>
+			<div id="my-comment">
+				<p>김혜교 님은..</p>
+			</div>
 		</figure>
 		<figure class="col-sm-2 text-center">
-		<h3><strong>99</strong>%</h3>
+		<div id="confidence-rate">
+			<h3><strong>99</strong>%</h3>
+		</div>
 		</figure>
 		<figure class="col-sm-5 text-center">
-			<img src="img/songhyekyo1.jpg" id="celImg" class="img-responsive img-center"/>
-			<p>송혜교씨와 닮으셨네요 :)!</p>
+			<img src="img/songhyekyo2.jpg" id="celImg" class="img-responsive img-center"/>
+			<div id="cel-comment">
+				<p>송혜교씨와 닮으셨네요 :)!</p>
+			</div>
 		</figure>
 		</div>
-		<br/>
-		<br/>
-		<br/>
 		<div class="dash-wrap">
 		<hr>
 		</div>
@@ -221,15 +224,6 @@
     </div>
   </footer>
 
-	<form id="snapshot" style="text-align:center;">
-		<div class="ui input">
-			<input type="text" name="usrname" id="usrname" placeholder="Input your name">
-			&nbsp;
-			&nbsp;
-			<input class="ui button" type="button" value="이미지 검색" onClick="searchFashion('현빈')">
-		</div>
-	</form>
-
 	<script>
 	// Get the modal
 	var modal = document.getElementById('myModal');
@@ -282,6 +276,7 @@
 				document.getElementById('results').innerHTML = '<h3>Your name is ' + document.getElementById('usrname').value + '</h3>'
 																+ '<img src="'+data+'">';
 				document.getElementById('myImg').src = data;
+				document.getElementById('my-comment').innerHTML = document.getElementById('usrname').value + "님은..";
 			} );
 		}
 
