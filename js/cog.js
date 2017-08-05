@@ -67,9 +67,14 @@ function analyzingFace(usrName, imgName, findSimilar) {
 			"\"}"
 		})
 		.done(function(data) {
-			var faceId = data[0]['faceId'];
-			var celName;
-			findSimilar(celName, faceId);
+			if (data.length < 1) {
+				var faceId = data[0]['faceId'];
+				var celName;
+				findSimilar(celName, faceId);
+			}
+			else {
+				alert("얼굴이 발견되지 않았습니다.");
+			}
 		})
 		.fail(function() {
 			alert("error");
@@ -99,16 +104,16 @@ function findSimilar(celName, faceId) {
 				"\"faceID\":\"" + faceId + "\"," +
 				"\"faceListID\":\"" + faceListId + "\"," +
 				"\"maxNumOfCandidatesReturned\":" + 3 + "," +
-				"\"mode\":\"matchPerson\"" +
+				"\"mode\":\"matchFace\"" +
 			"}",
 		})
 		.done(function(data) {
-			var faceId = data[0].persistedFaceId;
-			var confidence = data[0].confidence;
 			if (data.length < 1) {
 				alert("관련 연예인을 찾을 수 없습니다.")
 			}
 			else {
+				var faceId = data[0].persistedFaceId;
+				var confidence = data[0].confidence;
 				celFaceList(faceId, confidence);
 			}
 		})
