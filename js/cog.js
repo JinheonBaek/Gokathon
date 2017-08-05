@@ -17,7 +17,7 @@ function addFace() {
 		};
 
 		$.ajax({
-			url: "https://southeastasia.api.cognitive.microsoft.com/face/v1.0/facelists/{faceListId}/persistedFaces?" + faceListId + "/persistedFaces?" + $.param(params),
+			url: "https://southeastasia.api.cognitive.microsoft.com/face/v1.0/facelists/" + faceListId + "/persistedFaces?" + $.param(params),
 			beforeSend: function(xhrObj){
 				// Request headers
 				xhrObj.setRequestHeader("Content-Type","application/json");
@@ -51,7 +51,7 @@ function getFaceId(imgName) {
 			//"returnFaceAttributes": "{string}",
 		};
 		$.ajax( {
-			url: "https://westus.api.cognitive.microsoft.com/face/v1.0/detect?" + $.param(params),
+			url: "https://southeastasia.api.cognitive.microsoft.com/face/v1.0/detect?" + $.param(params),
 			beforeSend: function(xhrObj){
 				// Request headers
 				xhrObj.setRequestHeader("Content-Type","application/json");
@@ -88,16 +88,16 @@ function getFaceList() {
                 // Request headers
                 xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
             },
-            type: "GET",
+			type: "GET",
             // Request body
             data: "{body}",
         })
         .done(function(data) {
 			alert("success");
-			return data;
         })
         .fail(function() {
             alert("error");
         });
-    });
+	});
+	return data;
 }
