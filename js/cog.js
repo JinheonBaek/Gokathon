@@ -67,13 +67,13 @@ function analyzingFace(usrName, imgName, findSimilar) {
 			"\"}"
 		})
 		.done(function(data) {
-			if (data.length < 1) {
+			if (data[0] === undefined) {
+				alert("얼굴이 발견되지 않았습니다.");
+			}
+			else {
 				var faceId = data[0]['faceId'];
 				var celName;
 				findSimilar(celName, faceId);
-			}
-			else {
-				alert("얼굴이 발견되지 않았습니다.");
 			}
 		})
 		.fail(function() {
@@ -155,7 +155,7 @@ function findCelFace(faceId, confidence, data) {
 		if (faceId === faceList[x].persistedFaceId) {
 			document.getElementById('celebrity-result').innerHTML = faceList[x].userData + " 님 아니세요?";
 			document.getElementById('celImg').src = "https://gokathon.azurewebsites.net/celebrity/" + faceList[x].userData + ".jpg";
-			break;
+			searchCelFashion(faceList[x].userData);
 		}
 	}
 }
@@ -194,8 +194,7 @@ function printFaceList(data) {
 	}
 }
 
-function searchFashion(name) {
-	name = "현빈"
+function searchCelFashion(name) {
     $(function() {
         var params = {
             // Request parameters
@@ -217,7 +216,7 @@ function searchFashion(name) {
             data: "{body}",
         })
         .done(function(data) {
-            alert("success");
+            alert(JSON.stringify(data['images']));
         })
         .fail(function() {
             alert("error");
