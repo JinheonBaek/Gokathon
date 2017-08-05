@@ -42,7 +42,7 @@ function addFace() {
 
 // analyzingFace
 function analyzingFace(usrName, imgName, findSimilar) {
-	var imgPath = "http://jinheon.azurewebsites.net/VerifyFace/image/"+ imgName;
+	var imgPath = "https://Gokathon.azurewebsites.net/img/"+ imgName;
 
 	$(function() {
 		var params = {
