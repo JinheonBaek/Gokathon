@@ -153,7 +153,6 @@ function findCelFace(faceId, confidence, data) {
 	faceList = data['persistedFaces'];
 	for (x=0; x < faceList.length; x++) {
 		if (faceId === faceList[x].persistedFaceId) {
-			alert(confidence);
 			document.getElementById('celebrity-result').innerHTML = faceList[x].userData + " 님 아니세요?";
 			document.getElementById('confidence-rate').innerHTML = "정확도는? "+ confidence * 100;
 			document.getElementById('cel-comment').innerHTML = faceList[x].userData + "씨와 닮으셨네요 :)!"
