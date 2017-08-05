@@ -15,7 +15,8 @@ footer .row {
   align-items: center;
 }
 
-header h1 {
+
+header h3 {
   font-weight: 700;
   margin: 0;
 }
@@ -28,6 +29,12 @@ header nav {
 header p {
   padding: 0 20px;
   margin: 0;
+  color: #000000;
+}
+
+header p :hover {
+  color: #D91C5C;
+  background-color: #ffffff;
 }
 
 /*jumbotron*/
@@ -43,18 +50,12 @@ header p {
 }
 
 .jumbotron h2 {
-  font-size: 60px;
-  font-weight: 700;
+  font-size: 27px;
   margin-top: 40px;
   color: #fff;
-  text-shadow: 5px 4px #A9A9A9;
+  font-weight: lighter;
 }
 
-.jumbotron h4 {
-  margin: 20px 0 20px;
-  color: #fff;
-  letter-spacing: 2px;
-}
 
 .container-fluid {
   display: block;
@@ -73,6 +74,7 @@ header p {
   object-fit: cover;
   width:230px;
   height:230px;
+  border-radius: 300px;
 }
 
 .img-center{margin:0 auto;}
@@ -99,9 +101,11 @@ header p {
   color: #696969;
   text-shadow: none;
   background-color: #ffffff;
-  margin-top: 40px;
+  margin-top: 60px;
   font-weight: bold;
   padding: 12px 50px;
+  border-radius: 50px;
+
 }
 
 .btn.btn-primary:hover {
