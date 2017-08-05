@@ -227,12 +227,12 @@ function searchCelFashion(name) {
 }
 
 function printCelFashionLst(data) {
-	if (5 <= data['images']['value'].length)
-		len = 5
+	if (6 <= data['images']['value'].length)
+		len = 6
 	else
 		len = data['images']['value'].length
 
 	for (x=0; x<len; x++) {
-		alert(data['images']['value'][x]['contentUrl'])
+		document.getElementById('fashion-'+(x+1)).src = data['images']['value'][x]['contentUrl'];
 	}
 }
