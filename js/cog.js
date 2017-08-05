@@ -27,8 +27,8 @@ function addFace() {
 			async: false,
 			// Request body
 			data: "{" +
-				"\"url\":\"" + imgPath +
-			"\"}",
+				"\"url\":" + imgPath +
+			"}",
 		})
 		.done(function(data) {
 			alert("success");
