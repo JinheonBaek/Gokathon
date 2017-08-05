@@ -7,6 +7,7 @@ var subscriptionKey = "39e75e2ea70c4d14b70e4c29d3d61fde";
 function addFace() {
 	var usrName = document.getElementById('celname').value;
 	var imgPath = document.getElementById('url').value;
+
 	var faceListId = "celebrity";
 	
 	$(function() {
@@ -27,8 +28,8 @@ function addFace() {
 			async: false,
 			// Request body
 			data: "{" +
-				"\"url\":" + imgPath +
-			"}",
+				"\"url\":\"" + imgPath +
+			"\"}",
 		})
 		.done(function(data) {
 			alert("success");
@@ -39,8 +40,8 @@ function addFace() {
 	});
 }
 
-// Get FaceID
-function getFaceId(imgName) {
+// analyzingFace
+function analyzingFace(usrName, imgName, findSimilar) {
 	var imgPath = "http://jinheon.azurewebsites.net/VerifyFace/image/"+ imgName;
 
 	$(function() {
@@ -65,15 +66,47 @@ function getFaceId(imgName) {
 			"\"}"
 		})
 		.done(function(data) {
-			var str = JSON.stringify(data);
-			faceId = str.split(":").toString().split(",");
+			var faceId = data[0]['faceId'];
+			findSimilar(faceId);
 		})
 		.fail(function() {
 			alert("error");
 		});
 	});
+}
 
-	return faceId[1];
+function findSimilar(faceId) {
+	var faceListId = "celebrity";
+
+	$(function() {
+		var params = {
+			// Request parameters
+		};
+
+		$.ajax({
+			url: "https://southeastasia.api.cognitive.microsoft.com/face/v1.0/findsimilars?" + $.param(params),
+			beforeSend: function(xhrObj){
+				// Request headers
+				xhrObj.setRequestHeader("Content-Type","application/json");
+				xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+			},
+			type: "POST",
+			async: false,
+			// Request body
+			data: "{" +
+				"\"faceID\":" + faceId + "," +
+				"\"faceListID\":\"" + faceListId + "\"," +
+				"\"maxNumOfCandidatesReturned\":" + 10 + "," +
+				"\"mode\":\"matchPerson\"" +
+			"}",
+		})
+		.done(function(data) {
+			alert("success");
+		})
+		.fail(function() {
+			alert("error");
+		});
+	});
 }
 
 function getFaceList() {
@@ -93,11 +126,18 @@ function getFaceList() {
             data: "{body}",
         })
         .done(function(data) {
-			alert("success");
+			printFaceList(data);
         })
         .fail(function() {
             alert("error");
         });
 	});
-	return data;
+}
+
+function printFaceList(data) {
+	faceList = data['persistedFaces'];
+	for (x=0; x < faceList.length; x++) {
+		document.getElementById('faceLst').innerHTML += faceList[x].userData + '-';
+		document.getElementById('faceLst').innerHTML += faceList[x].persistedFaceId + '<br>';
+	}
 }

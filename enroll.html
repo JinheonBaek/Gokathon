@@ -23,7 +23,6 @@
 		<div class="ui input">
 			<input type="text" name="celname" id="celname" placeholder="Input celebrity name" size="40">
 		</div>
-		Ex) 
 		<br><br>
 		<div class="ui input">
 			<input type="text" name="url" id="url" placeholder="Input url" size="80">
@@ -34,10 +33,13 @@
 		</div>
 	</form>
 
-	<script type="text/javascript">
-		var Lst = getFaceList();
-		alert(Lst[0]);
+	<div class="ui section divider"></div>
 
+	<div class="ui main container" id="faceLst">
+	</div>
+	
+	<script type="text/javascript">
+		getFaceList();
 	</script>
 
 </body>
