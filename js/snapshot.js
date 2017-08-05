@@ -25,7 +25,6 @@ function snapshot(data) {
 					type: 'POST',
 					success: function(data) {
 						document.getElementById('resultsInfo').innerHTML = 'The image data is uploaded to the server';
-						alert("업로드 성공")
 						analyzingFace(usrName, imgName, findSimilar);
 					},
 					error: function(error) {

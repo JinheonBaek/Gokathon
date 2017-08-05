@@ -149,7 +149,7 @@ function findCelFace(faceId, confidence, data) {
 	for (x=0; x < faceList.length; x++) {
 		if (faceId === faceList[x].persistedFaceId) {
 			document.getElementById('celebrity-result').innerHTML = faceList[x].userData + " 님 아니세요?";
-			document.getElementById('myImg').src = "https://gokathon.azurewebsites.net/celebrity/" + faceList[x].userData + ".jpg";
+			document.getElementById('celImg').src = "https://gokathon.azurewebsites.net/celebrity/" + faceList[x].userData + ".jpg";
 			break;
 		}
 	}
