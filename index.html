@@ -18,7 +18,86 @@
 	<!-- Include the Webcam.js JavaScript Library -->
 	<script type="text/javascript" src="js/webcam.min.js"></script>
 
-	Hello
-	
+		<!-- Menu -->
+	<div class="ui top fixed menu" id="menu">
+		<div class="item">
+			온새미로
+		</div>
+		<a href="#test" class="item">Test</a>
+    </div>
+    
+    <span id="#test"></span>
+    <div class="ui main container" id="guide" style="padding-top:60px;">
+        <div id="main">
+			<!-- A button for taking snaps -->
+			<form id="snapshot" style="text-align:center;">
+				<div class="ui input">
+					<input type="text" name="usrname" id="usrname" placeholder="Input your name">
+					&nbsp;
+					&nbsp;
+					<input class="ui button" type="button" value="Take Snapshot" onClick="take_snapshot()">
+				</div>
+			</form>
+
+			</br>
+
+			<div id="my_camera">
+
+			</div>
+
+			</br>
+
+			<div id="results">
+				Your captured image will appear here...
+			</div>
+
+			</br>
+
+			<div id="resultsInfo">
+				ResultsInfo will appear here...
+			</div>
+
+			<form id="upload">
+				<button type="button" class="ui primary button" id="analysisImage" onClick="uploadImage()"> 
+					Analysing Image
+				</button>
+			</form>
+
+		</div>
+    </div>
+    
+<!-- Configure a few settings and attach camera -->
+	<script language="JavaScript">
+		Webcam.set({
+			width: 960,
+			height: 540,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+		Webcam.attach( '#my_camera' );
+	</script>
+
+	<!-- Code to handle taking the snapshot and displaying it locally -->
+	<script language="JavaScript">
+		// Write img data
+		data = ""
+
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+				// display results in page
+				data = data_uri
+				document.getElementById('results').innerHTML = '<h3>Your name is ' + document.getElementById('usrname').value + '</h3>' + '<h2>Here is your image:</h2>' 
+																+ '<img src="'+data+'" width=480px, height=270px>';
+			} );
+		}
+
+		function uploadImage() {
+			document.getElementById('resultsInfo').innerHTML = "Uploading image to server..."
+			document.getElementById('analysisImage').className = "ui primary loading button";
+			snapshot(data);
+		}
+    </script>
+    
 </body>
 </html>
