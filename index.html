@@ -257,8 +257,8 @@
 <!-- Configure a few settings and attach camera -->
 	<script language="JavaScript">
 		Webcam.set({
-			width: 960,
-			height: 540,
+			width: 640,
+			height: 480,
 			image_format: 'jpeg',
 			jpeg_quality: 90
 		});
@@ -275,8 +275,8 @@
 			Webcam.snap( function(data_uri) {
 				// display results in page
 				data = data_uri
-				document.getElementById('results').innerHTML = '<h3>Your name is ' + document.getElementById('usrname').value + '</h3>' + '<h2>Here is your image:</h2>' 
-																+ '<img src="'+data+'" width=480px, height=270px>';
+				document.getElementById('results').innerHTML = '<h3>Your name is ' + document.getElementById('usrname').value + '</h3>'
+																+ '<img src="'+data+'">';
 			} );
 		}
 
