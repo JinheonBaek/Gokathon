@@ -124,24 +124,27 @@
 	<span id="celebrity"></span>
 	<section class="container-fluid">
 		<div class="row module hex-banner heading-anchor text-center" id="celebrity-result">
-			<h1>혹시, "송혜교"씨 아니세요..?</h1>
+			<h1>당신과 닮은 연예인은 누구일까요?</h1>
 		</div>
 		<div class="row">
-		<figure class="col-sm-5 text-center ">
+		<figure class="col-sm-5 text-center">
 			<img src="img/songhyekyo1.jpg" id="myImg" class="img-responsive img-center align-"/>
 			<div id="my-comment">
-				<p>김혜교 님은..</p>
+				</br>
+				<h4>김혜교님은</h4>
 			</div>
 		</figure>
 		<figure class="col-sm-2 text-center">
-		<div id="confidence-rate">
-			<h3><strong>99</strong>%</h3>
+		</br></br></br></br></br>
+		<div id="confidence-rate" >
+			<h3><strong>64</strong>%</h3>
 		</div>
 		</figure>
 		<figure class="col-sm-5 text-center">
 			<img src="img/songhyekyo2.jpg" id="celImg" class="img-responsive img-center"/>
 			<div id="cel-comment">
-				<p>송혜교씨와 닮으셨네요 :)!</p>
+				</br>
+				<h4>송혜교씨와 닮으셨네요 :)</h4>
 			</div>
 		</figure>
 		</div>
@@ -256,7 +259,7 @@
 				document.getElementById('results').innerHTML = '<h3>Your name is ' + document.getElementById('usrname').value + '</h3>'
 																+ '<img src="'+data+'">';
 				document.getElementById('myImg').src = data;
-				document.getElementById('my-comment').innerHTML = document.getElementById('usrname').value + "님은..";
+				document.getElementById('my-comment').innerHTML = "<h4>" + document.getElementById('usrname').value + "님은";
 			} );
 		}
 

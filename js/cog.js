@@ -157,8 +157,8 @@ function findCelFace(faceId, confidence, data) {
 	for (x=0; x < faceList.length; x++) {
 		if (faceId === faceList[x].persistedFaceId) {
 			document.getElementById('celebrity-result').innerHTML = faceList[x].userData.split('_')[0] + " 님 아니세요?";
-			document.getElementById('confidence-rate').innerHTML = "정확도는? "+ confidence * 100;
-			document.getElementById('cel-comment').innerHTML = faceList[x].userData.split('_')[0] + "씨와 닮으셨네요 :)!"
+			document.getElementById('confidence-rate').innerHTML = "<h3><strong>" + confidence * 100 + "</strong>%</h3>";
+			document.getElementById('cel-comment').innerHTML = "<h4>" + faceList[x].userData.split('_')[0] + "씨와 닮으셨네요 :)</h4>"
 			document.getElementById('celImg').src = "https://gokathon.azurewebsites.net/celebrity/" + faceList[x].userData + ".jpg";
 			searchCelFashion(faceList[x].userData.split('_')[0]);
 		}
