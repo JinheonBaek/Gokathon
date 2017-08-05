@@ -137,6 +137,7 @@ function getFaceList() {
 function printFaceList(data) {
 	faceList = data['persistedFaces'];
 	for (x=0; x < faceList.length; x++) {
+		document.getElementById('faceLst').innerHTML += "<img src=\"https://Gokathon.azurewebsites.net/celebrity/" + faceList[x].userData + ".jpg\" width=\"50\">" ;
 		document.getElementById('faceLst').innerHTML += faceList[x].userData + '-';
 		document.getElementById('faceLst').innerHTML += faceList[x].persistedFaceId + '<br>';
 	}
