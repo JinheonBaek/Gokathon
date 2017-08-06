@@ -192,11 +192,14 @@ function getFaceList() {
 
 function printFaceList(data) {
 	faceList = data['persistedFaces'];
+	var num = 0;
 	for (x=0; x < faceList.length; x++) {
 		document.getElementById('faceLst').innerHTML += "<img src=\"https://Gokathon.azurewebsites.net/celebrity/" + faceList[x].userData + ".jpg\" width=\"50\">" ;
 		document.getElementById('faceLst').innerHTML += faceList[x].userData + '-';
 		document.getElementById('faceLst').innerHTML += faceList[x].persistedFaceId + '<br>';
+		num += 1;
 	}
+	document.getElementById('faceNum').innerHTML = num +" 명의 Celb 이미지가 등록되어 있습니다.";
 }
 
 function searchCelFashion(name) {
