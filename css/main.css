@@ -98,19 +98,20 @@ header p :hover {
 .btn.btn-primary {
   border-radius: 2px;
   border: 0px;
-  color: #696969;
-  text-shadow: none;
-  background-color: #ffffff;
+  color: #ffffff;
+  background-color: transparent;
+  border: #ffffff solid 2px;
   margin-top: 60px;
-  font-weight: bold;
+  font-weight: lighter;
   padding: 12px 50px;
   border-radius: 50px;
 
 }
 
 .btn.btn-primary:hover {
-  color: #FF1493;
-  background-color: #ffffff;
+  color: #ffffff;
+  background-color: #D91C5C;
+  border: #ffffff solid 2px;
 }
 
 .btn-secondary {
