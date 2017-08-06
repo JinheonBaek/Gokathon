@@ -199,7 +199,7 @@ function printFaceList(data) {
 		document.getElementById('faceLst').innerHTML += faceList[x].persistedFaceId + '<br>';
 		num += 1;
 	}
-	document.getElementById('faceNum').innerHTML = num +" 명의 Celb 이미지가 등록되어 있습니다.";
+	document.getElementById('faceNum').innerHTML = num +" 개의 Celeb 이미지가 등록되어 있습니다.";
 }
 
 function searchCelFashion(name) {
@@ -230,11 +230,39 @@ function searchCelFashion(name) {
             alert("error");
         });
 	});
+
+	$(function() {
+        var params = {
+            // Request parameters
+            "q": "\"" + name + " 화보\"",
+            "count": "10",
+            "offset": "0",
+            "mkt": "ko-KR",
+            "safesearch": "Moderate",
+        };
+      
+        $.ajax({
+            url: "https://api.cognitive.microsoft.com/bing/v5.0/search?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", searchSubscriptionKey);
+            },
+            type: "GET",
+            // Request body
+            data: "{body}",
+        })
+        .done(function(data) {
+            printCelFashionLst_1(data);
+        })
+        .fail(function() {
+            alert("error");
+        });
+	});
 }
 
 function printCelFashionLst(data) {
 	if (6 <= data['images']['value'].length)
-		len = 6
+		len = 3
 	else
 		len = data['images']['value'].length
 
@@ -243,6 +271,13 @@ function printCelFashionLst(data) {
 	}
 }
 
-function parseName(data) {
+function printCelFashionLst_1(data) {
+	if (6 <= data['images']['value'].length)
+		len = 3
+	else
+		len = data['images']['value'].length
 
+	for (x=0; x<len; x++) {
+		document.getElementById('fashion-'+(x+4)).src = data['images']['value'][x]['contentUrl'];
+	}
 }
